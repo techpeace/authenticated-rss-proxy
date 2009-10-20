@@ -4,7 +4,7 @@ Authenticated RSS Proxy
 Overview
 --------
 
-Inspired by Andy Delcambre, this proxy server takes a username and password as parameters and will convert a feed URL into an HTTP basic auth request and return the results.  This is useful for routing authenticated feeds (like GitHub activity feeds for private projects) into Google Reader.
+Inspired by Andy Delcambre, this proxy server takes a username and password as parameters and will convert a feed URL into an HTTP basic auth request and return the results.  This is useful for routing authenticated feeds into Google Reader.
 
 Usage
 -----
@@ -23,7 +23,7 @@ You'll need to split the URL of your feed up into the following parameters:
 
 Now you can just toss these into your new URL, which should look something like this...
 
-    http://myproxyserver.com/?hostname=github.com&url=/feeds/techpeace/commits/privaterepo/master&user=techpeace&password=mYpAssWoRd&ssl=true
+    http://myproxyserver.com/?hostname=feedhost.com&url=/feeds/privatefeeds/techpeace&user=techpeace&password=mYpAssWoRd&ssl=true
 
 ...and there's your authenticated RSS feed smiling back at you from your browser.  Easy!
 
