@@ -1,16 +1,19 @@
 require 'sinatra/base'
-require 'net/http'
+require 'net/https'
 
 run Sinatra.new {
   get('/') do
     content_type "application/xml"
 
-    Net::HTTP.start(params[:hostname]) do |http|
+    port = params[:ssl] ? 443 : 8000
+    http = Net::HTTP.new(params[:hostname], port)
+    http.use_ssl = params[:ssl]
+    resp = http.start do |http|
       req = Net::HTTP::Get.new(params[:url])
       req.basic_auth params[:user], params[:password]
-      response = http.request(req)
+      http.request(req)
     end
 
-    response
+    resp.body
   end
 }
